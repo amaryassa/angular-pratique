@@ -4,6 +4,7 @@ import { WelcomeComponent } from './admin/welcome/welcome.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { HomeComponent } from './home/home.component';
+import { TemplateFormComponent } from './template-form/template-form.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'add-product', component: AddProductComponent },
     ],
   },
+  { path: 'templateDriven', component: TemplateFormComponent },
   { path: '', component: HomeComponent },
 ];
 

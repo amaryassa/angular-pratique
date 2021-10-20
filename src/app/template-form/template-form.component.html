@@ -1,0 +1,9 @@
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+  <mat-form-field>
+    <input matInput name="name" placeholder="Name" ngModel />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="email" placeholder="Email" ngModel />
+  </mat-form-field>
+  <button mat-raised-button>Submit</button>
+</form>
