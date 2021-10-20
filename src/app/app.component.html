@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
   <span>Resume Angular</span>
+  span
   <a
     class="first-link"
     routerLinkActive="active"
@@ -9,6 +10,10 @@
     >Home</a
   >
   <a mat-button routerLinkActive="active" routerLink="/admin">Admin</a>
+  <span class="example-spacer"></span>
+
+  <button mat-button (click)="onLogin()">Login</button>
+  <button mat-button (click)="onLogout()">Logout</button>
 </mat-toolbar>
 <main class="content">
   <router-outlet></router-outlet>

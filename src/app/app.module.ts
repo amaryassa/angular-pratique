@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HomeComponent } from './home/home.component';
+import { AdminModule } from './admin/admin.module';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { HomeComponent } from './home/home.component';
-import { AdminModule } from './admin/admin.module';
+
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [

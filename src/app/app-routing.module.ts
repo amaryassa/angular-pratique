@@ -1,3 +1,4 @@
+import { AuthentificationGuard } from './auth/authentification.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './admin/welcome/welcome.component';
@@ -9,6 +10,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: WelcomeComponent,
+    canActivate: [AuthentificationGuard],
     children: [
       { path: 'add-user', component: AddUserComponent },
       { path: 'add-product', component: AddProductComponent },
