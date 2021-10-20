@@ -21,9 +21,11 @@ export class ReactiveFormsComponent implements OnInit {
       ]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       genre: new FormControl('femme', [Validators.required]),
-      rue: new FormControl(null),
-      ville: new FormControl(null),
-      cp: new FormControl(null, [Validators.required]),
+      address: new FormGroup({
+        rue: new FormControl(null),
+        ville: new FormControl(null),
+        cp: new FormControl(null, [Validators.required]),
+      }),
     });
   }
 

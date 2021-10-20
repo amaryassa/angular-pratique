@@ -28,7 +28,7 @@
 
   <label>Address </label>
 
-  <div class="address">
+  <div class="address" formGroupName="address">
     <mat-form-field>
       <input matInput name="rue" formControlName="rue" placeholder="rue" />
     </mat-form-field>
@@ -47,14 +47,12 @@
         formControlName="cp"
         placeholder="code_postal"
       />
+      <mat-error *ngIf="signUpForm.get('address.cp')?.hasError('required')">
+        CP is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
   </div>
-  <button
-    mat-raised-button
-    type="submit"
-    class="btn btn-primary"
-    [disabled]="!signUpForm.valid"
-  >
+  <button mat-raised-button type="submit" [disabled]="!signUpForm.valid">
     Submit
   </button>
 </form>
