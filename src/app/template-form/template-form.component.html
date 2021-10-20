@@ -12,6 +12,19 @@
   <mat-form-field>
     <input matInput name="email" placeholder="Email" ngModel required email />
   </mat-form-field>
+  <label>Address </label>
+
+  <div class="address" ngModelGroup="address" #address="ngModelGroup">
+    <mat-form-field>
+      <input matInput name="rue" placeholder="rue" ngModel required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="ville" placeholder="ville" ngModel required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="cp" placeholder="code_postal" ngModel required />
+    </mat-form-field>
+  </div>
   <button mat-raised-button>Submit</button>
   <ng-container
     *ngIf="
@@ -20,9 +33,15 @@
       myForm.controls.email.touched
     "
   >
-    Erreur control mail
+    <br />
+    Erreur control mail !
   </ng-container>
   <ng-container *ngIf="name && !name.valid && name.touched">
-    Erreur control name
+    <br />
+    Erreur control name !
+  </ng-container>
+  <ng-container *ngIf="address && !address.valid && address.touched">
+    <br />
+    Erreur control ADDRESS !
   </ng-container>
 </form>
