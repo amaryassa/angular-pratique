@@ -1,3 +1,9 @@
+<mat-progress-bar
+  *ngIf="isLoading$ | async"
+  mode="buffer"
+  style="position: absolute"
+></mat-progress-bar>
+
 <mat-toolbar color="primary">
   <span>Resume Angular</span>
   <a
@@ -9,6 +15,7 @@
     >Home</a
   >
   <a mat-button routerLinkActive="active" routerLink="/admin">Admin</a>
+  <a mat-button routerLinkActive="active" routerLink="/users">users</a>
 </mat-toolbar>
 <main class="content">
   <router-outlet></router-outlet>
