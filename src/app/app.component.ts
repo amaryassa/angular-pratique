@@ -16,4 +16,11 @@ export class AppComponent {
   onLogout() {
     this.authService.logout();
   }
+
+  onAddPermission() {
+    this.authService.addPermission();
+  }
+  onRemovePermission() {
+    this.authService.removePermission();
+  }
 }

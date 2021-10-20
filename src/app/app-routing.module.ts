@@ -5,6 +5,8 @@ import { WelcomeComponent } from './admin/welcome/welcome.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { HomeComponent } from './home/home.component';
+import { PersmissionsGuard } from './auth/persmissions.guard';
+import { ListComponent } from './admin/list/list.component';
 
 const routes: Routes = [
   {
@@ -12,8 +14,15 @@ const routes: Routes = [
     component: WelcomeComponent,
     canActivate: [AuthentificationGuard],
     children: [
-      { path: 'add-user', component: AddUserComponent },
-      { path: 'add-product', component: AddProductComponent },
+      {
+        path: '',
+        canActivateChild: [PersmissionsGuard],
+        children: [
+          { path: 'add-product', component: AddProductComponent },
+          { path: 'add-user', component: AddUserComponent },
+        ],
+      },
+      { path: 'list', component: ListComponent },
     ],
   },
   { path: '', component: HomeComponent },

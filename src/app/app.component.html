@@ -1,6 +1,5 @@
 <mat-toolbar color="primary">
   <span>Resume Angular</span>
-  span
   <a
     class="first-link"
     routerLinkActive="active"
@@ -12,6 +11,13 @@
   <a mat-button routerLinkActive="active" routerLink="/admin">Admin</a>
   <span class="example-spacer"></span>
 
+  <button mat-button color="warn" (click)="onAddPermission()">
+    Add Permission to child
+  </button>
+  <button mat-button color="warn" (click)="onRemovePermission()">
+    remove Permission to child
+  </button>
+  <span class="example-spacer"></span>
   <button mat-button (click)="onLogin()">Login</button>
   <button mat-button (click)="onLogout()">Logout</button>
 </mat-toolbar>
