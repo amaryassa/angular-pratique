@@ -9,7 +9,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ListComponent } from './list/list.component';
 
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [

@@ -12,7 +12,28 @@ export class TemplateFormComponent implements OnInit {
 
   ngOnInit(): void {}
   onSubmit(form: NgForm) {
-    console.log(form);
+    // console.log(form);
     console.log(this.signUpForm);
+  }
+
+  onSetValue() {
+    this.signUpForm.form.setValue({
+      name: 'amar',
+      email: 'amar@amar.fr',
+      address: {
+        rue: 'Iby',
+        ville: 'Ma ville',
+        cp: '101010',
+      },
+    });
+  }
+  onPatchValue() {
+    this.signUpForm.form.patchValue({
+      email: 'autre@autre.fr',
+    });
+  }
+
+  resetForm() {
+    this.signUpForm.reset();
   }
 }

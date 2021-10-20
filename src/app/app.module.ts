@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { AdminModule } from './admin/admin.module';
 import { TemplateFormComponent } from './template-form/template-form.component';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
