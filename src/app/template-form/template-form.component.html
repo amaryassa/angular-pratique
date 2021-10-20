@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+  <mat-form-field>
+    <input
+      matInput
+      name="name"
+      placeholder="Name"
+      #name="ngModel"
+      ngModel
+      required
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="email" placeholder="Email" ngModel required email />
+  </mat-form-field>
+  <button mat-raised-button>Submit</button>
+  <ng-container
+    *ngIf="
+      myForm.controls.email &&
+      !myForm.controls.email.valid &&
+      myForm.controls.email.touched
+    "
+  >
+    Erreur control mail
+  </ng-container>
+  <ng-container *ngIf="name && !name.valid && name.touched">
+    Erreur control name
+  </ng-container>
+</form>
