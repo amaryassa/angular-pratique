@@ -1,0 +1,17 @@
+.address {
+  display: flex;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.mat-form-field {
+  width: 100% !important;
+}
+button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.hobbies > * {
+  display: block;
+}

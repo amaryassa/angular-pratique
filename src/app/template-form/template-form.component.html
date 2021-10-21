@@ -1,0 +1,78 @@
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+  <div class="buttons">
+    <button
+      type="button"
+      mat-flat-button
+      color="accent"
+      (click)="onPatchValue()"
+    >
+      patchValue
+    </button>
+    <button
+      type="button"
+      mat-flat-button
+      color="primary"
+      (click)="onSetValue()"
+    >
+      setValue
+    </button>
+
+    <button type="button" mat-flat-button color="warn" (click)="resetForm()">
+      Reset
+    </button>
+  </div>
+  <br />
+
+  <mat-form-field>
+    <input
+      matInput
+      name="name"
+      placeholder="Name"
+      #name="ngModel"
+      ngModel
+      required
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="email" placeholder="Email" ngModel required email />
+  </mat-form-field>
+  <label>Address </label>
+
+  <div class="address" ngModelGroup="address" #address="ngModelGroup">
+    <mat-form-field>
+      <input matInput name="rue" placeholder="rue" ngModel required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="ville" placeholder="ville" ngModel required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="cp" placeholder="code_postal" ngModel required />
+    </mat-form-field>
+  </div>
+  <button
+    mat-raised-button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!myForm.valid"
+  >
+    Submit
+  </button>
+  <ng-container
+    *ngIf="
+      myForm.controls.email &&
+      !myForm.controls.email.valid &&
+      myForm.controls.email.touched
+    "
+  >
+    <br />
+    Erreur control mail !
+  </ng-container>
+  <ng-container *ngIf="name && !name.valid && name.touched">
+    <br />
+    Erreur control name !
+  </ng-container>
+  <ng-container *ngIf="address && !address.valid && address.touched">
+    <br />
+    Erreur control ADDRESS !
+  </ng-container>
+</form>

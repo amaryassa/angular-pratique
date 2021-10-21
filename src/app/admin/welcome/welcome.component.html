@@ -1,11 +1,14 @@
 <h1>Secured Admin Area</h1>
+<h3>Add User : Avec permission (Avec canActivateChild)</h3>
+<h3>Add Product : Avec permission (Avec canActivateChild)</h3>
+<h3>Show list : sans permission (sans canActivateChild)</h3>
 <section>
   <h5>Actions:</h5>
-  <a routerLink="add-user" routerLinkActive="active" mat-button>Add User</a>
+  <a routerLink="add-user" routerLinkActive="active" mat-button>Add User </a>
   <a routerLink="add-product" routerLinkActive="active" mat-button
     >Add Product</a
   >
-  <!-- <a routerLink="list" routerLinkActive="active" mat-button>Show list</a> -->
+  <a routerLink="list" routerLinkActive="active" mat-button>Show list</a>
 </section>
 <div class="content">
   <router-outlet></router-outlet>

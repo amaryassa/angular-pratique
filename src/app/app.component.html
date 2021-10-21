@@ -1,3 +1,9 @@
+<mat-progress-bar
+  *ngIf="isLoading$ | async"
+  mode="buffer"
+  style="position: absolute"
+></mat-progress-bar>
+
 <mat-toolbar color="primary">
   <span>Resume Angular</span>
   <a
@@ -9,9 +15,30 @@
     >Home</a
   >
   <a mat-button routerLinkActive="active" routerLink="/admin">Admin</a>
+
   <a mat-button routerLinkActive="active" routerLink="/filter-pipe"
     >filterPipe</a
   >
+
+  <a mat-button routerLinkActive="active" routerLink="/users">users</a>
+  <a mat-button routerLinkActive="active" routerLink="/templateDriven"
+    >template Driven</a
+  >
+  <a mat-button routerLinkActive="active" routerLink="/reactiveForms"
+    >reactiveForms</a
+  >
+  <span class="example-spacer"></span>
+
+  <button mat-button color="warn" (click)="onAddPermission()">
+    Add Permission to child
+  </button>
+  <button mat-button color="warn" (click)="onRemovePermission()">
+    remove Permission to child
+  </button>
+  <span class="example-spacer"></span>
+  <button mat-button (click)="onLogin()">Login</button>
+  <button mat-button (click)="onLogout()">Logout</button>
+
 </mat-toolbar>
 <main class="content">
   <router-outlet></router-outlet>

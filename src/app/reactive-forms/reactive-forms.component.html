@@ -1,0 +1,144 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <div class="buttons">
+    <button
+      type="button"
+      mat-flat-button
+      color="accent"
+      (click)="onPatchValue()"
+    >
+      patchValue
+    </button>
+    <button
+      type="button"
+      mat-flat-button
+      color="primary"
+      (click)="onSetValue()"
+    >
+      setValue
+    </button>
+
+    <button type="button" mat-flat-button color="warn" (click)="resetForm()">
+      Reset
+    </button>
+  </div>
+  <br />
+
+  <mat-form-field>
+    <input matInput name="name" formControlName="name" placeholder="Name" />
+    <mat-hint
+      >Affichage TEST : saisir un nom différent de
+      {{ restrictedNames }}</mat-hint
+    >
+    <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
+      name is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="signUpForm.get('name')?.hasError('nameIsRestricted')">
+      name is in <strong>restricted Names</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="email" formControlName="email" placeholder="Email" />
+    <mat-hint
+      >Affichage TEST : saisir un email différent de
+      {{ restrictedEmails }}</mat-hint
+    >
+
+    <mat-error
+      *ngIf="
+        signUpForm.get('email')?.hasError('email') &&
+        !signUpForm.get('email')?.hasError('required')
+      "
+    >
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="signUpForm.get('email')?.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="signUpForm.get('email')?.hasError('emailIsRestricted')">
+      Email is in <strong>restricted Email List</strong> saisir un email
+      différent de {{ restrictedEmails }}
+    </mat-error>
+  </mat-form-field>
+
+  <div>
+    <mat-radio-group name="genre" formControlName="genre">
+      <label>genre : </label>
+      <mat-radio-button *ngFor="let genre of genres" [value]="genre">{{
+        genre
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <label>Address </label>
+
+  <div class="address" formGroupName="address">
+    <mat-form-field>
+      <input matInput name="rue" formControlName="rue" placeholder="rue" />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        name="ville"
+        formControlName="ville"
+        placeholder="ville"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        name="cp"
+        formControlName="cp"
+        placeholder="code_postal"
+      />
+      <mat-error *ngIf="signUpForm.get('address.cp')?.hasError('required')">
+        CP is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div formArrayName="hobbies" class="hobbies">
+    <mat-form-field *ngFor="let hobby of hobbies.controls; let i = index">
+      <br />
+      index :{{ i }} <br />
+      <input matInput name="hobby" placeholder="hobby" [formControlName]="i" />
+      <button
+        type="button"
+        mat-button
+        matSuffix
+        mat-stroked-button
+        aria-label="delete"
+        color="warn"
+        (click)="onDeleteHobby(i)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="buttons">
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="onAddHobby()"
+      >
+        Add Hobby
+      </button>
+      <button
+        *ngIf="lengthHobbies > 0"
+        mat-raised-button
+        type="button"
+        color="warn"
+        (click)="onAllDeleteHobbies()"
+      >
+        Delete All hobbies
+      </button>
+    </div>
+  </div>
+  <button mat-raised-button type="submit">
+    <!-- <button mat-raised-button type="submit" [disabled]="!signUpForm.valid"> -->
+    Submit
+  </button>
+</form>
+
+<br /><br />
+<div>value Form : {{ $valueChanges | async | json }}</div>
+<div>status Form : {{ $statusChanges | async | json }}</div>
