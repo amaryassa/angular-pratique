@@ -6,9 +6,12 @@ import { delay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
+  constructor() {}
+
+
+ 
   isLogin: boolean = false;
   permission: boolean = false;
-  constructor() {}
   login() {
     this.isLogin = true;
   }
