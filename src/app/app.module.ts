@@ -9,24 +9,33 @@ import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+
+import { TemplateFormComponent } from './template-form/template-form.component';
+import { MaterialModule } from './material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    TemplateFormComponent,
+    ReactiveFormsComponent,
+  ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatDialogModule,
-    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
     AdminModule,
     UserModule,
     HttpClientModule,
     MatProgressBarModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -2,6 +2,8 @@ import { merge, Observable } from 'rxjs';
 import { ResolveEnd, ResolveStart, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { filter, mapTo } from 'rxjs/operators';
+import { AuthService } from './auth/auth.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,5 +25,19 @@ export class AppComponent implements OnInit {
       mapTo(false)
     );
     this.isLoading$ = merge(this._hideLoaderEvents$, this._showLoaderEvents$);
+}
+
+  onLogin() {
+    this.authService.login();
+  }
+  onLogout() {
+    this.authService.logout();
+  }
+
+  onAddPermission() {
+    this.authService.addPermission();
+  }
+  onRemovePermission() {
+    this.authService.removePermission();
   }
 }
