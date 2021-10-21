@@ -9,14 +9,21 @@ import { HomeComponent } from './home/home.component';
 import { AdminModule } from './admin/admin.module';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { MaterialModule } from './material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TemplateFormComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    TemplateFormComponent,
+    ReactiveFormsComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     AdminModule,
     MaterialModule,

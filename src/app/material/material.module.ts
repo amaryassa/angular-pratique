@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
 
 const MaterialComponents = [
   BrowserModule,
@@ -22,6 +24,8 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatSortModule,
   MatDialogModule,
+  MatRadioModule,
+  MatIconModule,
 ];
 @NgModule({
   imports: [MaterialComponents],
