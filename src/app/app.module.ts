@@ -10,8 +10,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './home/home.component';
 import { AdminModule } from './admin/admin.module';
+import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
+import { FormsModule } from '@angular/forms';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    FilterPipeComponent,
+    FilterPipe,
+    ShortenPipe,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +30,7 @@ import { AdminModule } from './admin/admin.module';
     MatDialogModule,
     MatButtonModule,
     AdminModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

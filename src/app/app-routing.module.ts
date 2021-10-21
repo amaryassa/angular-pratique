@@ -4,8 +4,10 @@ import { WelcomeComponent } from './admin/welcome/welcome.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { HomeComponent } from './home/home.component';
+import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
 
 const routes: Routes = [
+  { path: 'filter-pipe', component: FilterPipeComponent },
   {
     path: 'admin',
     component: WelcomeComponent,
