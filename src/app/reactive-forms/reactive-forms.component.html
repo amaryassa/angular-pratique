@@ -1,4 +1,28 @@
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <div class="buttons">
+    <button
+      type="button"
+      mat-flat-button
+      color="accent"
+      (click)="onPatchValue()"
+    >
+      patchValue
+    </button>
+    <button
+      type="button"
+      mat-flat-button
+      color="primary"
+      (click)="onSetValue()"
+    >
+      setValue
+    </button>
+
+    <button type="button" mat-flat-button color="warn" (click)="resetForm()">
+      Reset
+    </button>
+  </div>
+  <br />
+
   <mat-form-field>
     <input matInput name="name" formControlName="name" placeholder="Name" />
     <mat-hint
@@ -73,6 +97,8 @@
   </div>
   <div formArrayName="hobbies" class="hobbies">
     <mat-form-field *ngFor="let hobby of hobbies.controls; let i = index">
+      <br />
+      index :{{ i }} <br />
       <input matInput name="hobby" placeholder="hobby" [formControlName]="i" />
       <button
         type="button"
@@ -112,3 +138,7 @@
     Submit
   </button>
 </form>
+
+<br /><br />
+<div>value Form : {{ $valueChanges | async | json }}</div>
+<div>status Form : {{ $statusChanges | async | json }}</div>

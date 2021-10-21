@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import {
   FormGroup,
   FormControl,
@@ -22,6 +23,8 @@ export class ReactiveFormsComponent implements OnInit {
   signUpForm: FormGroup;
   restrictedNames = ['amar', 'jsk', 'kabylie'];
   restrictedEmails = ['amar@amar.fr', 'test@test.fr'];
+  $valueChanges: Observable<any>;
+  $statusChanges: Observable<string>;
   constructor() {}
 
   ngOnInit(): void {
@@ -36,7 +39,7 @@ export class ReactiveFormsComponent implements OnInit {
       email: new FormControl(
         null,
         [Validators.required, Validators.email],
-        isRestrictedEmails(this.restrictedEmails)
+        [isRestrictedEmails(this.restrictedEmails)]
       ),
       genre: new FormControl('femme', [Validators.required]),
       address: new FormGroup({
@@ -46,6 +49,8 @@ export class ReactiveFormsComponent implements OnInit {
       }),
       hobbies: new FormArray([]),
     });
+    this.$valueChanges = this.signUpForm.valueChanges;
+    this.$statusChanges = this.signUpForm.statusChanges;
   }
 
   onSubmit() {
@@ -53,8 +58,9 @@ export class ReactiveFormsComponent implements OnInit {
     // console.log(this.signUpForm.value);
   }
 
-  onAddHobby() {
-    const control = new FormControl(null, [Validators.required]);
+  onAddHobby(hobby?: string) {
+    const control = new FormControl(hobby ?? null);
+    // const control = new FormControl(hobby ?? null, [Validators.required]);
     this.hobbies.push(control);
   }
 
@@ -71,6 +77,30 @@ export class ReactiveFormsComponent implements OnInit {
 
   get lengthHobbies() {
     return (this.signUpForm.get('hobbies') as FormArray).length;
+  }
+
+  onSetValue() {
+    this.onAllDeleteHobbies();
+    this.signUpForm.setValue({
+      name: 'amar',
+      email: 'amar@amar.fr',
+      genre: 'femmme',
+      hobbies: [],
+      address: {
+        rue: 'Iby',
+        ville: 'Ma ville',
+        cp: '101010',
+      },
+    });
+  }
+  onPatchValue() {
+    this.signUpForm.patchValue({
+      email: 'autre@autre.fr',
+    });
+  }
+
+  resetForm() {
+    this.signUpForm.reset();
   }
 
   // isRestrictedNames2(control: FormControl): { [key: string]: boolean } | null {
