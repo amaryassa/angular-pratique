@@ -4,3 +4,11 @@
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
 }
+button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.hobbies > * {
+  display: block;
+}

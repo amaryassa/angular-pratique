@@ -52,6 +52,42 @@
       </mat-error>
     </mat-form-field>
   </div>
+  <div formArrayName="hobbies" class="hobbies">
+    <mat-form-field *ngFor="let hobby of hobbies.controls; let i = index">
+      <input matInput name="hobby" placeholder="hobby" [formControlName]="i" />
+      <button
+        type="button"
+        mat-button
+        matSuffix
+        mat-stroked-button
+        aria-label="delete"
+        color="warn"
+        (click)="onDeleteHobby(i)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="buttons">
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="onAddHobby()"
+      >
+        Add Hobby
+      </button>
+      <button
+        *ngIf="lengthHobbies > 0"
+        mat-raised-button
+        type="button"
+        color="warn"
+        (click)="onAllDeleteHobbies()"
+      >
+        Delete All hobbies
+      </button>
+    </div>
+  </div>
   <button mat-raised-button type="submit" [disabled]="!signUpForm.valid">
     Submit
   </button>
