@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const MaterialComponents = [
   BrowserModule,
@@ -26,6 +27,7 @@ const MaterialComponents = [
   MatDialogModule,
   MatRadioModule,
   MatIconModule,
+  MatProgressBarModule,
 ];
 @NgModule({
   imports: [MaterialComponents],
