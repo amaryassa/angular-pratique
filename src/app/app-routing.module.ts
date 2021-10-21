@@ -6,6 +6,8 @@ import { WelcomeComponent } from './admin/welcome/welcome.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { HomeComponent } from './home/home.component';
+import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
+
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './user/user.resolver';
 
@@ -16,6 +18,8 @@ import { PersmissionsGuard } from './auth/persmissions.guard';
 import { ListComponent } from './admin/list/list.component';
 
 const routes: Routes = [
+    { path: 'filter-pipe', component: FilterPipeComponent },
+
   { path: 'users', component: UserListComponent },
   {
     path: 'users/:id',

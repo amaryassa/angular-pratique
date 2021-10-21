@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { AdminModule } from './admin/admin.module';
+
+import { FilterPipeComponent } from './filter-pipe/filter-pipe.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
+
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,8 +23,14 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
   declarations: [
     AppComponent,
     HomeComponent,
+
+    FilterPipeComponent,
+    FilterPipe,
+    ShortenPipe,
+
     TemplateFormComponent,
     ReactiveFormsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -28,9 +39,11 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     ReactiveFormsModule,
     AppRoutingModule,
     AdminModule,
+
     UserModule,
     HttpClientModule,
     MaterialModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],
