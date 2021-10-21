@@ -1,9 +1,24 @@
 <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <input matInput name="name" formControlName="name" placeholder="Name" />
+    <mat-hint
+      >Affichage TEST : saisir un nom différent de
+      {{ restrictedNames }}</mat-hint
+    >
+    <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
+      name is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="signUpForm.get('name')?.hasError('nameIsRestricted')">
+      name is in <strong>restricted Names</strong>
+    </mat-error>
   </mat-form-field>
   <mat-form-field>
     <input matInput name="email" formControlName="email" placeholder="Email" />
+    <mat-hint
+      >Affichage TEST : saisir un email différent de
+      {{ restrictedEmails }}</mat-hint
+    >
+
     <mat-error
       *ngIf="
         signUpForm.get('email')?.hasError('email') &&
@@ -14,6 +29,10 @@
     </mat-error>
     <mat-error *ngIf="signUpForm.get('email')?.hasError('required')">
       Email is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="signUpForm.get('email')?.hasError('emailIsRestricted')">
+      Email is in <strong>restricted Email List</strong> saisir un email
+      différent de {{ restrictedEmails }}
     </mat-error>
   </mat-form-field>
 
@@ -88,7 +107,8 @@
       </button>
     </div>
   </div>
-  <button mat-raised-button type="submit" [disabled]="!signUpForm.valid">
+  <button mat-raised-button type="submit">
+    <!-- <button mat-raised-button type="submit" [disabled]="!signUpForm.valid"> -->
     Submit
   </button>
 </form>

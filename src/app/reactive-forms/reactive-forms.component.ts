@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormArray,
+  AbstractControl,
+  ValidatorFn,
+} from '@angular/forms';
+import {
+  isRestrictedNames,
+  isRestrictedEmails,
+} from '../validators/validators';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -8,18 +19,25 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 })
 export class ReactiveFormsComponent implements OnInit {
   genres = ['homme', 'femme'];
-
   signUpForm: FormGroup;
+  restrictedNames = ['amar', 'jsk', 'kabylie'];
+  restrictedEmails = ['amar@amar.fr', 'test@test.fr'];
   constructor() {}
 
   ngOnInit(): void {
     this.signUpForm = new FormGroup({
       name: new FormControl(null, [
         Validators.required,
-        Validators.minLength(2),
+        Validators.minLength(5),
         // Validators.maxLength(5),
+        // this.isRestrictedNames2.bind(this),
+        isRestrictedNames(this.restrictedNames),
       ]),
-      email: new FormControl(null, [Validators.required, Validators.email]),
+      email: new FormControl(
+        null,
+        [Validators.required, Validators.email],
+        isRestrictedEmails(this.restrictedEmails)
+      ),
       genre: new FormControl('femme', [Validators.required]),
       address: new FormGroup({
         rue: new FormControl(null),
@@ -31,7 +49,8 @@ export class ReactiveFormsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signUpForm.value);
+    console.log(this.signUpForm);
+    // console.log(this.signUpForm.value);
   }
 
   onAddHobby() {
@@ -53,4 +72,11 @@ export class ReactiveFormsComponent implements OnInit {
   get lengthHobbies() {
     return (this.signUpForm.get('hobbies') as FormArray).length;
   }
+
+  // isRestrictedNames2(control: FormControl): { [key: string]: boolean } | null {
+  //   if (this.restrictedNames.includes(control.value)) {
+  //     return { nameIsRestricted: true };
+  //   }
+  //   return null;
+  // }
 }
