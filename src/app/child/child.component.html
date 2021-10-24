@@ -1,0 +1,24 @@
+<p>child component</p>
+
+<div>{{ executeFunction() }}</div>
+
+<div>
+  regarder la console, la function "executeFunction" s'execute qu'une fois parce
+  qu'on a ajouté <b>changeDetection: ChangeDetectionStrategy.OnPush</b>
+</div>
+
+<hr />
+<hr />
+
+la variable login est initialisé a "true" et le service doit la passer à 'False'
+dans le ngOnInit grace à
+<b>"ChangeDetectorRef" this.ref.detectChanges() </b>;
+<p>Login avec DetectChanges: {{ this.login }}</p>
+<hr />
+
+la variable loginWithoutDetectChanges est initialisé a "true" et le service doit
+la passer à 'False' dans le ngOnInit mais elle ne va pas s'acutaliser car on a
+pas utilisé de
+<b>"ChangeDetectorRef" this.ref.detectChanges() </b>;
+<p>login sans DetectChanges : {{ this.loginWithoutDetectChanges }}</p>
+<hr />

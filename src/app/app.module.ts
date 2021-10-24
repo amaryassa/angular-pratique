@@ -10,8 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './home/home.component';
 import { AdminModule } from './admin/admin.module';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, ParentComponent, ChildComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
